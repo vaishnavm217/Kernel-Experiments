@@ -21,7 +21,7 @@ fi
 
 telegram-send -f defconfig.log
 
-make O=out ARCH=arm64 CROSS_COMPILE=~/aarch64gcc/bin/aarch64-linux-android- -j200 >&build.log
+make O=out ARCH=arm64 CC=~/clang/bin/clang CLANG_TRIPLE=~/linaro_gcc/bin/aarch64-linux-gnu- CROSS_COMPILE=~/aarch64gcc/bin/aarch64-linux-android- -j200 >&build.log
 if [ $? -eq 0 ]; then
 	TIME_CURR=$(TZ=":Asia/Kolkata" date +"%d.%m.%Y-%T")
 	telegram-send $TIME_CURR" - Build "$VERSION"."$PATCHLEVEL"."$SUBLEVEL" successful"
